@@ -29,7 +29,7 @@
         var aCardTeam = aTeam.getElementsByClassName("card___2ip_DLm icon--redCard icon--redCard-first icon--redCard-last").length;
 
             if(hCardTeam > 0 || aCardTeam > 0){
-                document.getElementById('box_over_content_11010').innerHTML += "<p style='color:white;padding:2px;font-size:10pt;'><font style='border-radius:10%;width:15px;height:10px;background-color:red;'>"+hCardTeam+"</font> - "+hTeam.textContent+" "+score+" "+ aTeam.textContent +" - <font style='border-radius:10%;width:10px;height:10px;background-color:red;'>"+aCardTeam+"</font> | Time: "+time+"min</p>";
+                document.getElementById('box_over_content_11010').innerHTML += "<a href='#"+lGames[i].id+"'><p style='color:white;padding:2px;font-size:10pt;'><font style='border-radius:10%;width:15px;height:10px;background-color:red;'>"+hCardTeam+"</font> - "+hTeam.textContent+" "+score+" "+ aTeam.textContent +" - <font style='border-radius:10%;width:10px;height:10px;background-color:red;'>"+aCardTeam+"</font> | Time: "+time+"min</p></a>";
             }
         }
    }, 5000);
