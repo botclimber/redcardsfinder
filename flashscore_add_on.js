@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         meusresultados add on
+// @name         flashscore_add_on
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.6
 // @description  red cards finder
-// @author       You
+// @author       botclimber
 // @match        https://www.flashscore.pt/
 // @match        https://www.flashscore.com/
 // @grant        none
@@ -25,13 +25,16 @@
         var hTeam = lGames[i].getElementsByClassName("event__participant event__participant--home")[0];
         var aTeam = lGames[i].getElementsByClassName("event__participant event__participant--away")[0];
 
-        var hCardTeam = hTeam.getElementsByClassName("card___2ip_DLm icon--redCard icon--redCard-first icon--redCard-last").length;
-        var aCardTeam = aTeam.getElementsByClassName("card___2ip_DLm icon--redCard icon--redCard-first icon--redCard-last").length;
+        var hCardTeam = hTeam.getElementsByClassName("card___2ip_DLm icon--redCard").length;
+        var aCardTeam = aTeam.getElementsByClassName("card___2ip_DLm icon--redCard").length;
 
             if(hCardTeam > 0 || aCardTeam > 0){
-                document.getElementById('box_over_content_11010').innerHTML += "<a href='#"+lGames[i].id+"'><p style='color:white;padding:2px;font-size:10pt;'><font style='border-radius:10%;width:15px;height:10px;background-color:red;'>"+hCardTeam+"</font> - "+hTeam.textContent+" "+score+" "+ aTeam.textContent +" - <font style='border-radius:10%;width:10px;height:10px;background-color:red;'>"+aCardTeam+"</font> | Time: "+time+"min</p></a>";
+                hTeam = (hCardTeam > 0)? "<span style='color:orange;'>"+hTeam.textContent+"</span>" : hTeam.textContent ;
+                aTeam = (aCardTeam > 0)? "<span style='color:orange;'>"+aTeam.textContent+"</span>" : aTeam.textContent ;
+
+                document.getElementById('box_over_content_11010').innerHTML += "<a href='#"+lGames[i].id+"'><p style='color:white;padding:2px;font-size:10pt;'><font style='border-radius:10%;width:15px;height:10px;background-color:red;'><b>"+hCardTeam+"</b></font> "+hTeam+" "+score+" "+aTeam+" <font style='border-radius:10%;width:10px;height:10px;background-color:red;'><b>"+aCardTeam+"</b></font> | Time: "+time+"</p></a>";
             }
         }
-   }, 5000);
+   }, 3000);
 
 })();
